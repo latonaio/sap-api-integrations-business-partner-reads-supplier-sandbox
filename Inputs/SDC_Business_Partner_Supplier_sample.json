@@ -4,16 +4,12 @@
 	"redis_key": "abcdefg",
 	"filepath": "/var/lib/aion/Data/rededge_sdc/abcdef.json",
 	"business_partner":  {
-            "BusinessPartner": "100084",
-		    "BusinessPartnerRole": "FLVN01",
+            "BusinessPartner": "9980002060",
+		    "BusinessPartnerRole": "BUP003",
             "ValidFrom": "20211109",
             "ValidTo": "",
-			"BusinessPartner": "100084",
-			"BusinessPartnerRole": "FLVN00",
-			"ValidFrom": "20211109",
-			"ValidTo": "",
 		    "AddressID": {
-			    "AddressID": "000001",
+			    "AddressID": "33210",
                 "ValidityStartDate": "20211109",
                 "ValidityEndDate": "",
                 "Country": "JP",
@@ -21,10 +17,10 @@
                 "StreetName": "東京都渋谷区",
                 "CityName": "神宮前6-12-18 WeWork Iceberg 3F",
                 "PostalCode": "150-0001",
-                "Language": "JA",
+                "Language": "JA"
 		     },
 		"Purchasing_Organization": {
-	        "PurchasingOrganization": "1000",
+	        "PurchasingOrganization": "1710",
 	        "IncotermsClassification": "",
 	        "InvoiceIsGoodsReceiptBased": true,
 	        "PaymentTerms": "Z001",
@@ -38,7 +34,7 @@
 	        "DeletionIndicator": false
 		},
 		"Company": {
-			"CompanyCode": "1000",
+			"CompanyCode": "1710",
 			"PaymentBlockingReason": "",
 		    "PaymentMethodsList": "T",
 		    "PaymentTerms": "Z001",
@@ -50,6 +46,6 @@
 		}
   },
   "api_schema": "sap.s4.beh.businesspartner.v1.BusinessPartner.Created.v1",
-  "business_partner_code":  "100084",
+  "business_partner_code":  "17300273",
   "deleted":  false
 }

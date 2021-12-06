@@ -8,7 +8,7 @@ type Company struct {
 				URI  string `json:"uri"`
 				Type string `json:"type"`
 			} `json:"__metadata"`
-			Supplier                    string `json:"BusinessPartner"`
+			Supplier                    string `json:"Supplier"`
 			CompanyCode                 string `json:"CompanyCode"`
 			PaymentBlockingReason       string `json:"PaymentBlockingReason"`
 			PaymentMethodsList          string `json:"PaymentMethodsList"`

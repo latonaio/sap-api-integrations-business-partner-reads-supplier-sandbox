@@ -72,14 +72,8 @@ type SDC struct {
 			CityName            string `json:"CityName"`
 			PostalCode          string `json:"PostalCode"`
 			Language            string `json:"Language"`
-			ToEmailAddress      string `json:"to_EmailAddress"`
-			ToFaxNumber         string `json:"to_FaxNumber"`
-			ToMobilePhoneNumber string `json:"to_MobilePhoneNumber"`
-			ToPhoneNumber       string `json:"to_PhoneNumber"`
-			ToURLAddress        string `json:"to_URLAddress"`
 		} `json:"AddressID"`
 		PurchasingOrganization struct {
-			SupplierDesc                   string `json:"Supplier_desc"`
 			PurchasingOrganization         string `json:"PurchasingOrganization"`
 			IncotermsClassification        string `json:"IncotermsClassification"`
 			InvoiceIsGoodsReceiptBased     bool   `json:"InvoiceIsGoodsReceiptBased"`
@@ -94,7 +88,6 @@ type SDC struct {
 			DeletionIndicator              bool   `json:"DeletionIndicator"`
 		} `json:"Purchasing_Organization"`
 		Company struct {
-			SupplierDesc                string `json:"Supplier_desc"`
 			CompanyCode                 string `json:"CompanyCode"`
 			PaymentBlockingReason       string `json:"PaymentBlockingReason"`
 			PaymentMethodsList          string `json:"PaymentMethodsList"`
@@ -102,7 +95,7 @@ type SDC struct {
 			ClearCustomerSupplier       bool   `json:"ClearCustomerSupplier"`
 			HouseBank                   string `json:"HouseBank"`
 			ReconciliationAccount       string `json:"ReconciliationAccount"`
-			SupplierIsBlockedForPosting string `json:"SupplierIsBlockedForPosting"`
+			SupplierIsBlockedForPosting bool   `json:"SupplierIsBlockedForPosting"`
 			DeletionIndicator           bool   `json:"DeletionIndicator"`
 		} `json:"Company"`
 	} `json:"business_partner"`

@@ -29,8 +29,8 @@ type Address struct {
      Language            string `json:"Language"`
 }
 
-type PurchaseOrganization struct {
-     Supplier                       string `json:"BusinessPartner"`
+type PurchasingOrganization struct {
+     Supplier                       string `json:"Supplier"`
      PurchasingOrganization         string `json:"PurchasingOrganization"`
      IncotermsClassification        string `json:"IncotermsClassification"`
      InvoiceIsGoodsReceiptBased     bool   `json:"InvoiceIsGoodsReceiptBased"`
@@ -46,7 +46,7 @@ type PurchaseOrganization struct {
 }
 
 type Company struct {
-     Supplier                    string `json:"BusinessPartner"`
+     Supplier                    string `json:"Supplier"`
      CompanyCode                 string `json:"CompanyCode"`
      PaymentBlockingReason       string `json:"PaymentBlockingReason"`
      PaymentMethodsList          string `json:"PaymentMethodsList"`

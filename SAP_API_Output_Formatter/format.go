@@ -60,12 +60,12 @@ func ConvertToAddress(raw []byte, l *logger.Logger) (*Address, error) {
 	}, nil
 }
 
-func ConvertToPurchaseOrganization(raw []byte, l *logger.Logger) (*PurchaseOrganization, error) {
-	pm := &responses.PurchaseOrganization{}
+func ConvertToPurchasingOrganization(raw []byte, l *logger.Logger) (*PurchasingOrganization, error) {
+	pm := &responses.PurchasingOrganization{}
 
 	err := json.Unmarshal(raw, pm)
 	if err != nil {
-		return nil, xerrors.Errorf("cannot convert to PurchaseOrganization. unmarshal error: %w", err)
+		return nil, xerrors.Errorf("cannot convert to PurchasingOrganization. unmarshal error: %w", err)
 	}
 	if len(pm.D.Results) == 0 {
 		return nil, xerrors.New("Result data is not exist")
@@ -75,8 +75,9 @@ func ConvertToPurchaseOrganization(raw []byte, l *logger.Logger) (*PurchaseOrgan
 	}
 	data := pm.D.Results[0]
 
-	return &PurchaseOrganization{
-		PurchasingOrganization:         data.PurchasingOrganization,
+	return &PurchasingOrganization{
+		Supplier:                       data.Supplier,
+        PurchasingOrganization:         data.PurchasingOrganization,
 		IncotermsClassification:        data.IncotermsClassification,
 		InvoiceIsGoodsReceiptBased:     data.InvoiceIsGoodsReceiptBased,
 		PaymentTerms:                   data.PaymentTerms,
@@ -107,7 +108,7 @@ func ConvertToCompany(raw []byte, l *logger.Logger) (*Company, error) {
 	data := pm.D.Results[0]
 
 	return &Company{
-		Supplier:                       data.Customer,
+		Supplier:                       data.Supplier,
 		CompanyCode:                    data.CompanyCode,
 		PaymentBlockingReason:          data.PaymentBlockingReason,
 		PaymentMethodsList:             data.PaymentMethodsList,

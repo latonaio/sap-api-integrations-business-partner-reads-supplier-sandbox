@@ -17,8 +17,10 @@ func main() {
 
 	caller.AsyncGetBPSupplier(
 		inoutSDC.BusinessPartner.BusinessPartner,
-        inoutSDC.BusinessPartner.BusinessPartnerRole,
+		inoutSDC.BusinessPartner.BusinessPartnerRole,
+		inoutSDC.BusinessPartner.Address.AddressID,
 		inoutSDC.BusinessPartner.PurchasingOrganization.PurchasingOrganization,
+		inoutSDC.Supplier,
 		inoutSDC.BusinessPartner.Company.CompanyCode,
 	)
 }

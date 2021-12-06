@@ -1,0 +1,7 @@
+{
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L88",
+	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).Address",
+	"level": "INFO",
+	"message": "&{BusinessPartner:9980002060 AddressID:33210 ValidityStartDate:/Date(1470355200000+0000)/ ValidityEndDate:/Date(253402300799000+0000)/ Country:US Region: StreetName: CityName:Palo Alto PostalCode:94304-1355 Language:EN}",
+	"time": "2021-12-06T10:09:51.596415+09:00"
+}

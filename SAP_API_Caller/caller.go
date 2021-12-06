@@ -26,7 +26,7 @@ func NewSAPAPICaller(baseUrl string, l *logger.Logger) *SAPAPICaller {
 	}
 }
 
-func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, addressID, purchaseOrganization, supplier, companyCode string) {
+func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, addressID, purchasingOrganization, supplier, companyCode string) {
 	wg := &sync.WaitGroup{}
 
 	wg.Add(4)
@@ -39,7 +39,7 @@ func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, 
 		wg.Done()
 	}()
 	func() {
-		c.PurchaseOrganization(supplier, purchaseOrganization)
+		c.PurchasingOrganization(supplier, purchasingOrganization)
 		wg.Done()
 	}()
 	func() {
@@ -109,8 +109,8 @@ func (c *SAPAPICaller) callBPSupplierSrvAPIRequirementAddress(api, businessPartn
 	return data, nil
 }
 
-func (c *SAPAPICaller) PurchaseOrganization(businessPartner, salesOrganization, distributionChannel, division string) {
-	data, err := c.callBPSupplierSrvAPIRequirementPurchaseOrganization("A_SupplierPurchasingOrg", supplier, purchaseOrganization)
+func (c *SAPAPICaller) PurchasingOrganization(supplier, purchasingOrganization string) {
+	data, err := c.callBPSupplierSrvAPIRequirementPurchasingOrganization("A_SupplierPurchasingOrg", supplier, purchasingOrganization)
 	if err != nil {
 		c.log.Error(err)
 		return
@@ -118,12 +118,12 @@ func (c *SAPAPICaller) PurchaseOrganization(businessPartner, salesOrganization, 
 	c.log.Info(data)
 }
 
-func (c *SAPAPICaller) callBPSupplierSrvAPIRequirementPurchaseOrganization(api, supplier, purchaseOrganization string) (*sap_api_output_formatter.PurchaseOrganization, error) {
+func (c *SAPAPICaller) callBPSupplierSrvAPIRequirementPurchasingOrganization(api, supplier, purchasingOrganization string) (*sap_api_output_formatter.PurchasingOrganization, error) {
 	url := strings.Join([]string{c.baseURL, "API_BUSINESS_PARTNER", api}, "/")
 	req, _ := http.NewRequest("GET", url, nil)
 
 	c.setHeaderAPIKeyAccept(req)
-	c.getQueryWithPurchaseOrganization(req, supplier, purchaseOrganization)
+	c.getQueryWithPurchasingOrganization(req, supplier, purchasingOrganization)
 
 	resp, err := new(http.Client).Do(req)
 	if err != nil {
@@ -132,7 +132,7 @@ func (c *SAPAPICaller) callBPSupplierSrvAPIRequirementPurchaseOrganization(api, 
 	defer resp.Body.Close()
 
 	byteArray, _ := ioutil.ReadAll(resp.Body)
-	data, err := sap_api_output_formatter.ConvertToPurchaseOrganization(byteArray, c.log)
+	data, err := sap_api_output_formatter.ConvertToPurchasingOrganization(byteArray, c.log)
 	if err != nil {
 		return nil, xerrors.Errorf("convert error: %w", err)
 	}
@@ -186,9 +186,9 @@ func (c *SAPAPICaller) getQueryWithAddress(req *http.Request, businessPartner, a
 	req.URL.RawQuery = params.Encode()
 }
 
-func (c *SAPAPICaller) getQueryWithPurchaseOrganization(req *http.Request, supplier, purchaseOrganization string) {
+func (c *SAPAPICaller) getQueryWithPurchasingOrganization(req *http.Request, supplier, purchasingOrganization string) {
 	params := req.URL.Query()
-	params.Add("$filter", fmt.Sprintf("Supplier eq '%s' and PurchaseOrganization eq '%s'", supplier, purchaseOrganization))
+	params.Add("$filter", fmt.Sprintf("Supplier eq '%s' and PurchasingOrganization eq '%s'", supplier, purchasingOrganization))
 	req.URL.RawQuery = params.Encode()
 }
 

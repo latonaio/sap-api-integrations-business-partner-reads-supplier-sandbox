@@ -8,7 +8,7 @@ type PurchasingOrganization struct {
 				URI  string `json:"uri"`
 				Type string `json:"type"`
 			} `json:"__metadata"`
-			Supplier                       string `json:"BusinessPartner"`
+			Supplier                       string `json:"Supplier"`
 			PurchasingOrganization         string `json:"PurchasingOrganization"`
 			IncotermsClassification        string `json:"IncotermsClassification"`
 			InvoiceIsGoodsReceiptBased     bool   `json:"InvoiceIsGoodsReceiptBased"`
