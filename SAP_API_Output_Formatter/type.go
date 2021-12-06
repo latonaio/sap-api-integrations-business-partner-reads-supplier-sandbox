@@ -27,15 +27,10 @@ type Address struct {
      CityName            string `json:"CityName"`
      PostalCode          string `json:"PostalCode"`
      Language            string `json:"Language"`
-     ToEmailAddress      string `json:"to_EmailAddress"`
-     ToFaxNumber         string `json:"to_FaxNumber"`
-     ToMobilePhoneNumber string `json:"to_MobilePhoneNumber"`
-     ToPhoneNumber       string `json:"to_PhoneNumber"`
 }
 
 type PurchaseOrganization struct {
-     BusinessPartner                string `json:"BusinessPartner"`
-     SupplierDesc                   string `json:"Supplier_desc"`
+     Supplier                       string `json:"BusinessPartner"`
      PurchasingOrganization         string `json:"PurchasingOrganization"`
      IncotermsClassification        string `json:"IncotermsClassification"`
      InvoiceIsGoodsReceiptBased     bool   `json:"InvoiceIsGoodsReceiptBased"`
@@ -51,8 +46,7 @@ type PurchaseOrganization struct {
 }
 
 type Company struct {
-     BusinessPartner             string `json:"BusinessPartner"`
-     SupplierDesc                string `json:"Supplier_desc"`
+     Supplier                    string `json:"BusinessPartner"`
      CompanyCode                 string `json:"CompanyCode"`
      PaymentBlockingReason       string `json:"PaymentBlockingReason"`
      PaymentMethodsList          string `json:"PaymentMethodsList"`

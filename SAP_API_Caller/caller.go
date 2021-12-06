@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	sap_api_output_formatter "sap-api-integrations-business-partner-reads-supplier/SAP_API_Output_Formatter"
 	"strings"
 	"sync"
 
 	"github.com/latonaio/golang-logging-library/logger"
+	"golang.org/x/xerrors"
 )
 
 type SAPAPICaller struct {
@@ -24,162 +26,174 @@ func NewSAPAPICaller(baseUrl string, l *logger.Logger) *SAPAPICaller {
 	}
 }
 
-		
-func (c *SAPAPICaller) AsyncGetBusinessPartnerSupplier(BusinessPartner, BusinessPartnerRole, VaridityEndDate, PurchasingOrganization, DistributionChannel, CompanyCode string) {
+func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, addressID, purchaseOrganization, supplier, companyCode string) {
 	wg := &sync.WaitGroup{}
 
 	wg.Add(4)
-	go func() {
-		c.Role(BusinessPartner, BusinessPartnerRole)
+	func() {
+		c.Role(businessPartner, businessPartnerRole)
 		wg.Done()
 	}()
-	go func() {
-		c.Address(BusinessPartner, VaridityEndDate)
+	func() {
+		c.Address(businessPartner, addressID)
 		wg.Done()
 	}()
-	go func() {
-		c.PurchasingOrganization(BusinessPartner, PurchasingOrganization)
+	func() {
+		c.PurchaseOrganization(supplier, purchaseOrganization)
 		wg.Done()
 	}()
-	go func() {
-		c.Company(BusinessPartner, CompanyCode)
+	func() {
+		c.Company(supplier, companyCode)
 		wg.Done()
 	}()
 	wg.Wait()
 }
 
-func (c *SAPAPICaller) Role(BusinessPartner, BusinessPartnerRole string) {
-	res, err := c.callBusinessPartnerSrvAPIRequirementRole("A_BusinessPartner('{BusinessPartner}')/to_BusinessPartnerRole", BusinessPartner, BusinessPartnerRole)
+func (c *SAPAPICaller) Role(businessPartner, businessPartnerRole string) {
+	data, err := c.callBPSupplierSrvAPIRequirementRole("A_BusinessPartnerRole", businessPartner, businessPartnerRole)
 	if err != nil {
 		c.log.Error(err)
 		return
 	}
-
-	c.log.Info(res)
-
+	c.log.Info(data)
 }
 
-func (c *SAPAPICaller) Address(BusinessPartner, VaridityEndDate string) {
-	res, err := c.callBusinessPartnerSrvAPIRequirementAddress("A_BusinessPartner('{BusinessPartner}')/to_BusinessPartnerAddress", BusinessPartner, VaridityEndDate)
+func (c *SAPAPICaller) callBPSupplierSrvAPIRequirementRole(api, businessPartner, businessPartnerRole string) (*sap_api_output_formatter.Role, error) {
+	url := strings.Join([]string{c.baseURL, "API_BUSINESS_PARTNER", api}, "/")
+	req, _ := http.NewRequest("GET", url, nil)
+
+	c.setHeaderAPIKeyAccept(req)
+	c.getQueryWithRole(req, businessPartner, businessPartnerRole)
+
+	resp, err := new(http.Client).Do(req)
+	if err != nil {
+		return nil, xerrors.Errorf("API request error: %w", err)
+	}
+	defer resp.Body.Close()
+
+	byteArray, _ := ioutil.ReadAll(resp.Body)
+	data, err := sap_api_output_formatter.ConvertToRole(byteArray, c.log)
+	if err != nil {
+		return nil, xerrors.Errorf("convert error: %w", err)
+	}
+	return data, nil
+}
+
+func (c *SAPAPICaller) Address(businessPartner, addressID string) {
+	data, err := c.callBPSupplierSrvAPIRequirementAddress("A_BusinessPartnerAddress", businessPartner, addressID)
 	if err != nil {
 		c.log.Error(err)
 		return
 	}
-
-	c.log.Info(res)
-
+	c.log.Info(data)
 }
 
-func (c *SAPAPICaller) PurchasingOrganization(BusinessPartner, PurchasingOrganization string) {
-	res, err := c.callBusinessPartnerSrvAPIRequirementPurchasingOrganization("A_Supplier('{Supplier}')/to_SupplierPurchasingOrg", BusinessPartner, PurchasingOrganization)
+func (c *SAPAPICaller) callBPSupplierSrvAPIRequirementAddress(api, businessPartner, addressID string) (*sap_api_output_formatter.Address, error) {
+	url := strings.Join([]string{c.baseURL, "API_BUSINESS_PARTNER", api}, "/")
+	req, _ := http.NewRequest("GET", url, nil)
+
+	c.setHeaderAPIKeyAccept(req)
+	c.getQueryWithAddress(req, businessPartner, addressID)
+
+	resp, err := new(http.Client).Do(req)
+	if err != nil {
+		return nil, xerrors.Errorf("API request error: %w", err)
+	}
+	defer resp.Body.Close()
+
+	byteArray, _ := ioutil.ReadAll(resp.Body)
+	data, err := sap_api_output_formatter.ConvertToAddress(byteArray, c.log)
+	if err != nil {
+		return nil, xerrors.Errorf("convert error: %w", err)
+	}
+	return data, nil
+}
+
+func (c *SAPAPICaller) PurchaseOrganization(businessPartner, salesOrganization, distributionChannel, division string) {
+	data, err := c.callBPSupplierSrvAPIRequirementPurchaseOrganization("A_SupplierPurchasingOrg", supplier, purchaseOrganization)
 	if err != nil {
 		c.log.Error(err)
 		return
 	}
-
-	c.log.Info(res)
-
+	c.log.Info(data)
 }
 
-func (c *SAPAPICaller) Company(BusinessPartner, CompanyCode string) {
-	res, err := c.callBusinessPartnerSrvAPIRequirementCompany("A_Supplier('{Supplier}')/to_SupplierCompany", BusinessPartner, CompanyCode)
+func (c *SAPAPICaller) callBPSupplierSrvAPIRequirementPurchaseOrganization(api, supplier, purchaseOrganization string) (*sap_api_output_formatter.PurchaseOrganization, error) {
+	url := strings.Join([]string{c.baseURL, "API_BUSINESS_PARTNER", api}, "/")
+	req, _ := http.NewRequest("GET", url, nil)
+
+	c.setHeaderAPIKeyAccept(req)
+	c.getQueryWithPurchaseOrganization(req, supplier, purchaseOrganization)
+
+	resp, err := new(http.Client).Do(req)
+	if err != nil {
+		return nil, xerrors.Errorf("API request error: %w", err)
+	}
+	defer resp.Body.Close()
+
+	byteArray, _ := ioutil.ReadAll(resp.Body)
+	data, err := sap_api_output_formatter.ConvertToPurchaseOrganization(byteArray, c.log)
+	if err != nil {
+		return nil, xerrors.Errorf("convert error: %w", err)
+	}
+	return data, nil
+}
+
+func (c *SAPAPICaller) Company(supplier, companyCode string) {
+	data, err := c.callBPSupplierSrvAPIRequirementCompany("A_SupplierCompany", supplier, companyCode)
 	if err != nil {
 		c.log.Error(err)
 		return
 	}
-
-	c.log.Info(res)
-
+	c.log.Info(data)
 }
 
-func (c *SAPAPICaller) callBusinessPartnerSrvAPIRequirementRole(api, BusinessPartner, BusinessPartnerRole, string) ([]byte, error) {
+func (c *SAPAPICaller) callBPSupplierSrvAPIRequirementCompany(api, supplier, companyCode string) (*sap_api_output_formatter.Company, error) {
 	url := strings.Join([]string{c.baseURL, "API_BUSINESS_PARTNER", api}, "/")
 	req, _ := http.NewRequest("GET", url, nil)
 
-	params := req.URL.Query()
-	// params.Add("$select", "BusinessPartner, BusinessPartnerRole")
-	params.Add("$filter", fmt.Sprintf("BusinessPartner eq '%s' and BusinessPartnerRole eq '%s'", BusinessPartner, BusinessPartnerRole))
-	req.URL.RawQuery = params.Encode()
+	c.setHeaderAPIKeyAccept(req)
+	c.getQueryWithCompany(req, supplier, companyCode)
 
-	req.Header.Set("APIKey", c.apiKey)
-	req.Header.Set("Accept", "application/json")
-
-	client := new(http.Client)
-	resp, err := client.Do(req)
+	resp, err := new(http.Client).Do(req)
 	if err != nil {
-		return nil, err
+		return nil, xerrors.Errorf("API request error: %w", err)
 	}
 	defer resp.Body.Close()
 
 	byteArray, _ := ioutil.ReadAll(resp.Body)
-	return byteArray, nil
+	data, err := sap_api_output_formatter.ConvertToCompany(byteArray, c.log)
+	if err != nil {
+		return nil, xerrors.Errorf("convert error: %w", err)
+	}
+	return data, nil
 }
 
-func (c *SAPAPICaller) callBusinessPartnerSrvAPIRequirementAddress(api, BusinessPartner, VaridityEndDate string) ([]byte, error) {
-	url := strings.Join([]string{c.baseURL, "API_BUSINESS_PARTNER", api}, "/")
-	req, _ := http.NewRequest("GET", url, nil)
-
-	params := req.URL.Query()
-	// params.Add("$select", "BusinessPartner, VaridityEndDate")
-	params.Add("$filter", fmt.Sprintf("BusinessPartner eq '%s' and VaridityEndDate eq '%s'", BusinessPartner, VaridityEndDate))
-	req.URL.RawQuery = params.Encode()
-
+func (c *SAPAPICaller) setHeaderAPIKeyAccept(req *http.Request) {
 	req.Header.Set("APIKey", c.apiKey)
 	req.Header.Set("Accept", "application/json")
-
-	client := new(http.Client)
-	resp, err := client.Do(req)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	byteArray, _ := ioutil.ReadAll(resp.Body)
-	return byteArray, nil
 }
 
-func (c *SAPAPICaller) callBusinessPartnerSrvAPIRequirementPurchasingOrganization(api, BusinessPartner, PurchasingOrganization string) ([]byte, error) {
-	url := strings.Join([]string{c.baseURL, "API_BUSINESS_PARTNER", api}, "/")
-	req, _ := http.NewRequest("GET", url, nil)
-
+func (c *SAPAPICaller) getQueryWithRole(req *http.Request, businessPartner, businessPartnerRole string) {
 	params := req.URL.Query()
-	// params.Add("$select", "BusinessPartner, PurchasingOrganization")
-	params.Add("$filter", fmt.Sprintf("BusinessPartner eq '%s' and PurchasingOrganization eq '%s'", BusinessPartner, PurchasingOrganization))
+	params.Add("$filter", fmt.Sprintf("BusinessPartner eq '%s' and BusinessPartnerRole eq '%s'", businessPartner, businessPartnerRole))
 	req.URL.RawQuery = params.Encode()
-
-	req.Header.Set("APIKey", c.apiKey)
-	req.Header.Set("Accept", "application/json")
-
-	client := new(http.Client)
-	resp, err := client.Do(req)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	byteArray, _ := ioutil.ReadAll(resp.Body)
-	return byteArray, nil
 }
 
-func (c *SAPAPICaller) callBusinessPartnerSrvAPIRequirementCompany(api, BusinessPartner, CompanyCode string) ([]byte, error) {
-	url := strings.Join([]string{c.baseURL, "API_BUSINESS_PARTNER", api}, "/")
-	req, _ := http.NewRequest("GET", url, nil)
-
+func (c *SAPAPICaller) getQueryWithAddress(req *http.Request, businessPartner, addressID string) {
 	params := req.URL.Query()
-	// params.Add("$select", "BusinessPartner, CompanyCode")
-	params.Add("$filter", fmt.Sprintf("BusinessPartner eq '%s' and CompanyCode eq '%s'", BusinessPartner, CompanyCode))
+	params.Add("$filter", fmt.Sprintf("BusinessPartner eq '%s' and AddressID eq '%s'", businessPartner, addressID))
 	req.URL.RawQuery = params.Encode()
+}
 
-	req.Header.Set("APIKey", c.apiKey)
-	req.Header.Set("Accept", "application/json")
+func (c *SAPAPICaller) getQueryWithPurchaseOrganization(req *http.Request, supplier, purchaseOrganization string) {
+	params := req.URL.Query()
+	params.Add("$filter", fmt.Sprintf("Supplier eq '%s' and PurchaseOrganization eq '%s'", supplier, purchaseOrganization))
+	req.URL.RawQuery = params.Encode()
+}
 
-	client := new(http.Client)
-	resp, err := client.Do(req)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	byteArray, _ := ioutil.ReadAll(resp.Body)
-	return byteArray, nil
+func (c *SAPAPICaller) getQueryWithCompany(req *http.Request, supplier, companyCode string) {
+	params := req.URL.Query()
+	params.Add("$filter", fmt.Sprintf("Supplier eq '%s' and CompanyCode eq '%s'", supplier, companyCode))
+	req.URL.RawQuery = params.Encode()
 }

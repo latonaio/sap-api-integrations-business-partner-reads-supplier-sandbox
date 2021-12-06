@@ -62,7 +62,7 @@ type SDC struct {
 		BusinessPartnerRole string   `json:"BusinessPartnerRole"`
 		ValidFrom           string   `json:"ValidFrom"`
 		ValidTo             string   `json:"ValidTo"`
-		AddressID           struct {
+		Address             struct {
 			AddressID           string `json:"AddressID"`
 			ValidityStartDate   string `json:"ValidityStartDate"`
 			ValidityEndDate     string `json:"ValidityEndDate"`
@@ -107,6 +107,6 @@ type SDC struct {
 		} `json:"Company"`
 	} `json:"business_partner"`
 	APISchema           string `json:"api_schema"`
-	BusinessPartner     string `json:"business_partner_code"`
+	Supplier            string `json:"business_partner_code"`
 	Deleted             bool   `json:"deleted"`
 }

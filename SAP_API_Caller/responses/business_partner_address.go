@@ -18,10 +18,6 @@ type Address struct {
 			CityName            string `json:"CityName"`
 			PostalCode          string `json:"PostalCode"`
 			Language            string `json:"Language"`
-			ToEmailAddress      string `json:"to_EmailAddress"`
-			ToFaxNumber         string `json:"to_FaxNumber"`
-			ToMobilePhoneNumber string `json:"to_MobilePhoneNumber"`
-			ToPhoneNumber       string `json:"to_PhoneNumber"`
 		} `json:"results"`
 	} `json:"d"`
 }
