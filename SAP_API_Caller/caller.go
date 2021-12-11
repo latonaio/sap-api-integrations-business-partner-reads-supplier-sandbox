@@ -26,26 +26,37 @@ func NewSAPAPICaller(baseUrl string, l *logger.Logger) *SAPAPICaller {
 	}
 }
 
-func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, addressID, purchasingOrganization, supplier, companyCode string) {
+func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, addressID, purchasingOrganization, supplier, companyCode string, accepter []string) {
 	wg := &sync.WaitGroup{}
+	wg.Add(len(accepter))
+	for _, fn := range accepter {
+		switch fn {
+		case "Role":
+			func() {
+				c.Role(businessPartner, businessPartnerRole)
+				wg.Done()
+			}()
+		case "Address":
+			func() {
+				c.Address(businessPartner, addressID)
+				wg.Done()
+			}()
+		case "PurchasingOrganization":
+			func() {
+				c.PurchasingOrganization(supplier, purchasingOrganization)
+				wg.Done()
+			}()
+		case "Company":
+			func() {
+				c.Company(supplier, companyCode)
+				wg.Done()
+			}()
 
-	wg.Add(4)
-	func() {
-		c.Role(businessPartner, businessPartnerRole)
-		wg.Done()
-	}()
-	func() {
-		c.Address(businessPartner, addressID)
-		wg.Done()
-	}()
-	func() {
-		c.PurchasingOrganization(supplier, purchasingOrganization)
-		wg.Done()
-	}()
-	func() {
-		c.Company(supplier, companyCode)
-		wg.Done()
-	}()
+		default:
+			wg.Done()
+		}
+	}
+
 	wg.Wait()
 }
 

@@ -10,10 +10,17 @@ import (
 func main() {
 	l := logger.NewLogger()
 	fr := sap_api_input_reader.NewFileReader()
-	inoutSDC := fr.ReadSDC("./Inputs//SDC_Business_Partner_Supplier_sample.json")
+	inoutSDC := fr.ReadSDC("./Inputs//SDC_Business_Partner_Supplier_Role_sample.json")
 	caller := sap_api_caller.NewSAPAPICaller(
 		"https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/", l,
 	)
+
+	accepter := inoutSDC.Accepter
+	if len(accepter) == 0 || accepter[0] == "All" {
+		accepter = []string{
+			"Role", "Address", "PurchasingOrganization", "Company",
+		}
+	}
 
 	caller.AsyncGetBPSupplier(
 		inoutSDC.BusinessPartner.BusinessPartner,
@@ -22,5 +29,6 @@ func main() {
 		inoutSDC.BusinessPartner.PurchasingOrganization.PurchasingOrganization,
 		inoutSDC.Supplier,
 		inoutSDC.BusinessPartner.Company.CompanyCode,
+		accepter,
 	)
 }
