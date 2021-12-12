@@ -1,0 +1,52 @@
+{
+	"connection_key": "response",
+	"result": true,
+	"redis_key": "abcdefg",
+	"filepath": "/var/lib/aion/Data/rededge_sdc/abcdef.json",
+	"business_partner":  {
+            "BusinessPartner": "",
+		    "BusinessPartnerRole": "",
+            "ValidFrom": "",
+            "ValidTo": "",
+		    "AddressID": {
+			    "AddressID": "",
+                "ValidityStartDate": "",
+                "ValidityEndDate": "",
+                "Country": "",
+                "Region": "",
+                "StreetName": "",
+                "CityName": "",
+                "PostalCode": "",
+                "Language": ""
+		     },
+		"Purchasing_Organization": {
+	        "PurchasingOrganization": "",
+	        "IncotermsClassification": "",
+	        "InvoiceIsGoodsReceiptBased": true,
+	        "PaymentTerms": "",
+	        "PurOrdAutoGenerationIsAllowed": true,
+	        "PurchaseOrderCurrency": "",
+	        "PurchasingGroup": "",
+	        "ShippingCondition": "",
+	        "SupplierPhoneNumber": "",
+	        "SupplierRespSalesPersonName": "",
+		    "PurchasingIsBlockedForSupplier": false,
+	        "DeletionIndicator": false
+		},
+		"Company": {
+			"CompanyCode": "1710",
+			"PaymentBlockingReason": "",
+		    "PaymentMethodsList": "",
+		    "PaymentTerms": "",
+		    "ClearCustomerSupplier": false,
+		    "HouseBank": "",
+		    "ReconciliationAccount": "",
+		    "SupplierIsBlockedForPosting": false,
+			"DeletionIndicator": false
+		}
+  },
+  "api_schema": "sap.s4.beh.businesspartner.v1.BusinessPartner.Created.v1",
+  "accepter": ["Company"],
+  "business_partner_code":  "1018",
+  "deleted":  false
+}
