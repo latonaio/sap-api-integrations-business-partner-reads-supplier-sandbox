@@ -1,7 +1,18 @@
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L88",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L99",
 	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).Address",
 	"level": "INFO",
-	"message": "&{BusinessPartner:9980002060 AddressID:33210 ValidityStartDate:/Date(1470355200000+0000)/ ValidityEndDate:/Date(253402300799000+0000)/ Country:US Region: StreetName: CityName:Palo Alto PostalCode:94304-1355 Language:EN}",
-	"time": "2021-12-06T10:09:51.596415+09:00"
+	"message": {
+		"BusinessPartner": "11",
+		"AddressID": "27512",
+		"ValidityStartDate": "/Date(1527206400000+0000)/",
+		"ValidityEndDate": "/Date(253402300799000+0000)/",
+		"Country": "DE",
+		"Region": "",
+		"StreetName": "Berlin",
+		"CityName": "",
+		"PostalCode": "10115",
+		"Language": "EN"
+	},
+	"time": "2021-12-18T22:10:18.653391+09:00"
 }

@@ -1,7 +1,12 @@
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L58",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L69",
 	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).Role",
 	"level": "INFO",
-	"message": "&{BusinessPartner:9980002060 BusinessPartnerRole:BUP003 ValidFrom:/Date(1470355200000+0000)/ ValidTo:/Date(253402300799000+0000)/}",
-	"time": "2021-12-06T10:02:49.193609+09:00"
+	"message": {
+		"BusinessPartner": "9980002060",
+		"BusinessPartnerRole": "BUP003",
+		"ValidFrom": "/Date(1470355200000+0000)/",
+		"ValidTo": "/Date(253402300799000+0000)/"
+	},
+	"time": "2021-12-18T22:09:07.026509+09:00"
 }

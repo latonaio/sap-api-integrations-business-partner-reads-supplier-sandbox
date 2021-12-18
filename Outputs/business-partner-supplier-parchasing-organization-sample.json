@@ -1,7 +1,21 @@
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L118",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L129",
 	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).PurchasingOrganization",
 	"level": "INFO",
-	"message": "&{Supplier:17300273 PurchasingOrganization:1710 IncotermsClassification: InvoiceIsGoodsReceiptBased:false PaymentTerms:0004 PurOrdAutoGenerationIsAllowed:false PurchaseOrderCurrency:USD PurchasingGroup:001 ShippingCondition:01 SupplierPhoneNumber: SupplierRespSalesPersonName: PurchasingIsBlockedForSupplier:false DeletionIndicator:false}",
-	"time": "2021-12-06T10:13:41.499448+09:00"
+	"message": {
+		"Supplier": "1018",
+		"PurchasingOrganization": "1710",
+		"IncotermsClassification": "",
+		"InvoiceIsGoodsReceiptBased": false,
+		"PaymentTerms": "0001",
+		"PurOrdAutoGenerationIsAllowed": false,
+		"PurchaseOrderCurrency": "EUR",
+		"PurchasingGroup": "002",
+		"ShippingCondition": "",
+		"SupplierPhoneNumber": "",
+		"SupplierRespSalesPersonName": "",
+		"PurchasingIsBlockedForSupplier": false,
+		"DeletionIndicator": false
+	},
+	"time": "2021-12-18T22:11:58.833929+09:00"
 }
