@@ -3,16 +3,16 @@
 	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).Address",
 	"level": "INFO",
 	"message": {
-		"BusinessPartner": "11",
-		"AddressID": "27512",
-		"ValidityStartDate": "/Date(1527206400000+0000)/",
+		"BusinessPartner": "10300001",
+		"AddressID": "22824",
+		"ValidityStartDate": "/Date(1466380800000+0000)/",
 		"ValidityEndDate": "/Date(253402300799000+0000)/",
 		"Country": "DE",
-		"Region": "",
-		"StreetName": "Berlin",
-		"CityName": "",
-		"PostalCode": "10115",
-		"Language": "EN"
+		"Region": "NW",
+		"StreetName": "Hullerner Straße",
+		"CityName": "Haltern am See",
+		"PostalCode": "45721",
+		"Language": "DE"
 	},
-	"time": "2021-12-18T22:10:18.653391+09:00"
+	"time": "2021-12-20T11:57:24.483993+09:00"
 }
