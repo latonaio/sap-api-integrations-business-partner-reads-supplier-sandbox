@@ -3,10 +3,10 @@
 	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).Role",
 	"level": "INFO",
 	"message": {
-		"BusinessPartner": "9980002060",
-		"BusinessPartnerRole": "BUP003",
-		"ValidFrom": "/Date(1470355200000+0000)/",
+		"BusinessPartner": "10300001",
+		"BusinessPartnerRole": "FLVN00",
+		"ValidFrom": "/Date(1466380800000+0000)/",
 		"ValidTo": "/Date(253402300799000+0000)/"
 	},
-	"time": "2021-12-18T22:09:07.026509+09:00"
+	"time": "2021-12-20T11:56:10.907636+09:00"
 }
