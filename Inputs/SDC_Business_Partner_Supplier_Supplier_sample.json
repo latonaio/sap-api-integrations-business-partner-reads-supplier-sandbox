@@ -128,7 +128,7 @@
 			}
 		},
 		"Company": {
-			"CompanyCode": "1710",
+			"CompanyCode": "",
 			"PaymentBlockingReason": "",
 			"PaymentMethodsList": "",
 			"PaymentTerms": "",
@@ -140,7 +140,7 @@
 		}
 	},
 	"api_schema": "sap.s4.beh.businesspartner.v1.BusinessPartner.Created.v1",
-	"accepter": ["Company"],
+	"accepter": ["Supplier"],
 	"business_partner_code": "1018",
 	"deleted": false
 }

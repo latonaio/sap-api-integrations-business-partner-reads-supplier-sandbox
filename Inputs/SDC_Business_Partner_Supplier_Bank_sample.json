@@ -4,9 +4,9 @@
 	"redis_key": "abcdefg",
 	"filepath": "/var/lib/aion/Data/rededge_sdc/abcdef.json",
 	"business_partner": {
-		"BusinessPartner": "1018",
+		"BusinessPartner": "1000140",
 		"Customer": "",
-		"Supplier": "1018",
+		"Supplier": "",
 		"AcademicTitle": "",
 		"AuthorizationGroup": "",
 		"BusinessPartnerCategory": "",
@@ -69,9 +69,9 @@
 		},
 		"Bank": {
 			"BankIdentification": "",
-			"BankCountryKey": "",
+			"BankCountryKey": "US",
 			"BankName": "",
-			"BankNumber": "",
+			"BankNumber": "CITIUS33XXX",
 			"SWIFTCode": "",
 			"BankControlKey": "",
 			"BankAccountHolderName": "",
@@ -87,7 +87,7 @@
 			"AuthorizationGroup": ""
 		},
 		"SupplierData": {
-			"Supplier": "1018",
+			"Supplier": "",
 			"AuthorizationGroup": "",
 			"CreationDate": "",
 			"Customer": "",
@@ -128,7 +128,7 @@
 			}
 		},
 		"Company": {
-			"CompanyCode": "1710",
+			"CompanyCode": "",
 			"PaymentBlockingReason": "",
 			"PaymentMethodsList": "",
 			"PaymentTerms": "",
@@ -140,7 +140,7 @@
 		}
 	},
 	"api_schema": "sap.s4.beh.businesspartner.v1.BusinessPartner.Created.v1",
-	"accepter": ["Company"],
-	"business_partner_code": "1018",
+	"accepter": ["Bank"],
+	"business_partner_code": "1000140",
 	"deleted": false
 }

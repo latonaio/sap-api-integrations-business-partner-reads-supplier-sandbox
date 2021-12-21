@@ -6,7 +6,7 @@
 	"business_partner": {
 		"BusinessPartner": "1018",
 		"Customer": "",
-		"Supplier": "1018",
+		"Supplier": "",
 		"AcademicTitle": "",
 		"AuthorizationGroup": "",
 		"BusinessPartnerCategory": "",
@@ -87,7 +87,7 @@
 			"AuthorizationGroup": ""
 		},
 		"SupplierData": {
-			"Supplier": "1018",
+			"Supplier": "",
 			"AuthorizationGroup": "",
 			"CreationDate": "",
 			"Customer": "",
@@ -128,7 +128,7 @@
 			}
 		},
 		"Company": {
-			"CompanyCode": "1710",
+			"CompanyCode": "",
 			"PaymentBlockingReason": "",
 			"PaymentMethodsList": "",
 			"PaymentTerms": "",
@@ -140,7 +140,7 @@
 		}
 	},
 	"api_schema": "sap.s4.beh.businesspartner.v1.BusinessPartner.Created.v1",
-	"accepter": ["Company"],
+	"accepter": ["General"],
 	"business_partner_code": "1018",
 	"deleted": false
 }

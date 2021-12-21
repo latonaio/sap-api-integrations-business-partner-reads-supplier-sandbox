@@ -1,6 +1,6 @@
 package responses
 
-type PurchasingOrganization struct {
+type ToPurchasingOrganization struct {
 	D struct {
 		Results []struct {
 			Metadata struct {
@@ -21,6 +21,11 @@ type PurchasingOrganization struct {
 			SupplierRespSalesPersonName    string `json:"SupplierRespSalesPersonName"`
 			PurchasingIsBlockedForSupplier bool   `json:"PurchasingIsBlockedForSupplier"`
 			DeletionIndicator              bool   `json:"DeletionIndicator"`
+			ToPartnerFunction              struct {
+				Deferred struct {
+					URI string `json:"uri"`
+				} `json:"__deferred"`
+			} `json:"to_PartnerFunction"`
 		} `json:"results"`
 	} `json:"d"`
 }
