@@ -66,11 +66,11 @@ Latona および AION の SAP 関連リソースでは、Inputs フォルダ下�
 * sample.jsonの記載例(1)  
 
 accepter において 下記の例のように、データの種別（＝APIの種別）を指定します。  
-ここでは、"General" が指定されています。    
+ここでは、"Supplier" が指定されています。    
   
 ```
 	"api_schema": "sap.s4.beh.businesspartner.v1.BusinessPartner.Created.v1",
-	"accepter": ["General"],
+	"accepter": ["Supplier"],
 	"business_partner_code": "1018",
 	"deleted": false
 ```
@@ -144,69 +144,36 @@ func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, 
 
 ## Output  
 本マイクロサービスでは、[golang-logging-library](https://github.com/latonaio/golang-logging-library) により、以下のようなデータがJSON形式で出力されます。  
-以下の sample.json の例は、SAP ビジネスパートナ仕入先  の 一般データ が取得された結果の JSON の例です。  
-以下の項目のうち、"BusinessPartner" ～ "to_Supplier" は、/SAP_API_Output_Formatter/type.go 内 の Type Product {} による出力結果です。"cursor" ～ "time"は、golang-logging-library による 定型フォーマットの出力結果です。  
+以下の sample.json の例は、SAP ビジネスパートナ仕入先  の 仕入先データ が取得された結果の JSON の例です。  
+以下の項目のうち、"Supplier" ～ "to_SupplierCompany" は、/SAP_API_Output_Formatter/type.go 内 の Type Supplier {} による出力結果です。"cursor" ～ "time"は、golang-logging-library による 定型フォーマットの出力結果です。  
 
 ```
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L84",
-	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).General",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L381",
+	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).Supplier",
 	"level": "INFO",
 	"message": [
 		{
-			"BusinessPartner": "1018",
-			"Customer": "",
 			"Supplier": "1018",
-			"AcademicTitle": "",
 			"AuthorizationGroup": "",
-			"BusinessPartnerCategory": "2",
-			"BusinessPartnerFullName": "Bechtle AG Kriek street",
-			"BusinessPartnerGrouping": "BP01",
-			"BusinessPartnerName": "Bechtle AG Kriek street",
-			"CorrespondenceLanguage": "",
 			"CreationDate": "/Date(1540771200000)/",
-			"CreationTime": "PT05H48M11S",
-			"FirstName": "",
-			"Industry": "",
-			"IsFemale": false,
-			"IsMale": false,
-			"IsNaturalPerson": "",
-			"IsSexUnknown": false,
-			"GenderCodeName": "",
-			"Language": "",
-			"LastChangeDate": "/Date(1540771200000)/",
-			"LastChangeTime": "PT05H51M10S",
-			"LastName": "",
-			"OrganizationBPName1": "Bechtle AG",
-			"OrganizationBPName2": "Kriek street",
-			"OrganizationBPName3": "",
-			"OrganizationBPName4": "",
-			"OrganizationFoundationDate": "",
-			"OrganizationLiquidationDate": "",
-			"SearchTerm1": "BECHTLE AG",
-			"SearchTerm2": "",
-			"AdditionalLastName": "",
+			"Customer": "",
+			"PaymentIsBlockedForSupplier": false,
+			"PostingIsBlocked": false,
+			"PurchasingIsBlocked": false,
+			"SupplierAccountGroup": "SUPL",
+			"SupplierFullName": "Company Bechtle AGKriek street/74172 Neckarsulm",
+			"SupplierName": "Bechtle AG Kriek street",
 			"BirthDate": "",
-			"BusinessPartnerBirthplaceName": "",
-			"BusinessPartnerDeathDate": "",
-			"BusinessPartnerIsBlocked": false,
-			"BusinessPartnerType": "",
-			"GroupBusinessPartnerName1": "",
-			"GroupBusinessPartnerName2": "",
-			"IndependentAddressID": "",
-			"MiddleName": "",
-			"NameCountry": "",
-			"PersonFullName": "",
-			"PersonNumber": "",
-			"IsMarkedForArchiving": false,
-			"BusinessPartnerIDByExtSystem": "",
-			"TradingPartner": "",
-			"to_BusinessPartnerRole": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('1018')/to_BusinessPartnerRole",
-			"to_BusinessPartnerAddress": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('1018')/to_BusinessPartnerAddress",
-			"to_BusinessPartnerBank": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('1018')/to_BusinessPartnerBank",
-			"to_Supplier": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('1018')/to_Supplier"
+			"DeletionIndicator": false,
+			"Industry": "",
+			"IsNaturalPerson": "",
+			"SupplierCorporateGroup": "",
+			"SupplierProcurementBlock": "",
+			"to_SupplierPurchasingOrg": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_Supplier('1018')/to_SupplierPurchasingOrg",
+			"to_SupplierCompany": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_Supplier('1018')/to_SupplierCompany"
 		}
 	],
-	"time": "2021-12-21T11:44:31.481394+09:00"
+	"time": "2021-12-21T12:07:35.34316+09:00"
 }
 ```
