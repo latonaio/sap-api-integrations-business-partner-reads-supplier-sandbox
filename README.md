@@ -24,7 +24,7 @@ sap-api-integrations-business-partner-reads-supplier が対応する APIサー�
 ## 本レポジトリ に 含まれる API名
 sap-api-integrations-business-partner-reads-supplier には、次の API をコールするためのリソースが含まれています。  
 
-* A_BusinessPartner（ビジネスパートナ - 一般）※ビジネスパートナ一般データの詳細データを取得するために、ToRole、ToAddress、ToBank、ToSupplier、ToSalesArea、ToPurchasingOrganization、ToPartnerFunction、ToCompany、と合わせて利用されます。
+* A_BusinessPartner（ビジネスパートナ - 一般）※ビジネスパートナ一般の詳細データを取得するために、ToRole、ToAddress、ToBank、ToSupplier、ToSalesArea、ToPurchasingOrganization、ToPartnerFunction、ToCompany、と合わせて利用されます。
 * ToRole（ビジネスパートナ - ロール）
 * ToAddress（ビジネスパートナ - アドレス）
 * ToBank（ビジネスパートナ - 銀行）
@@ -35,11 +35,11 @@ sap-api-integrations-business-partner-reads-supplier には、次の API をコ�
 * A_BusinessPartnerRole（ビジネスパートナ - ロール）
 * A_BusinessPartnerAddress（ビジネスパートナ - アドレス）
 * A_BusinessPartnerBank（ビジネスパートナ - 銀行）
-* A_Supplier（ビジネスパートナ - 仕入先）※ビジネスパートナ仕入先データの詳細データを取得するために、ToPurchasingOrganization、ToPartnerFunction、ToCompany、と合わせて利用されます。
+* A_Supplier（ビジネスパートナ - 仕入先）※ビジネスパートナ仕入先の詳細データを取得するために、ToPurchasingOrganization、ToPartnerFunction、ToCompany、と合わせて利用されます。
 * ToPurchasingOrganization（ビジネスパートナ - 購買組織）
 * ToPartnerFunction（ビジネスパートナ - 取引先機能）
 * ToCompany（ビジネスパートナ - 会社）
-* A_SupplierPurchasingOrg（ビジネスパートナ - 仕入先購買組織）※ビジネスパートナ仕入先購買組織データの詳細データを取得するために、ToPartnerFunction、と合わせて利用されます。
+* A_SupplierPurchasingOrg（ビジネスパートナ - 仕入先購買組織）※ビジネスパートナ仕入先購買組織の詳細データを取得するために、ToPartnerFunction、と合わせて利用されます。
 * ToPartnerFunction（ビジネスパートナ - 取引先機能）
 * A_SupplierCompany（ビジネスパートナ - 会社）
 
