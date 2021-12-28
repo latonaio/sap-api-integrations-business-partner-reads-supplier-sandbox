@@ -54,6 +54,7 @@ sap-api-integrations-business-partner-reads-supplier において、API への�
 * inoutSDC.BusinessPartner.Address.AddressID（アドレスID）
 * inoutSDC.BusinessPartner.Bank.BankCountryKey（銀行国コード）
 * inoutSDC.BusinessPartner.Bank.BankNumber（銀行コード）
+* inoutSDC.BusinessPartner.BusinessPartnerName（ビジネスパートナ名）
 * inoutSDC.BusinessPartner.SupplierData.Supplier（仕入先コード ※ビジネスパートナの販売エリア・会社コード関連のAPIをコールするときにビジネスパートナではなく仕入先コードとしての項目値が必要です。通常は、ビジネスパートナの値＝仕入先コードの値、となります）
 * inoutSDC.BusinessPartner.SupplierData.PurchasingOrganization.PurchasingOrganization（購買組織）
 * inoutSDC.BusinessPartner.Company.CompanyCode（会社コード）
@@ -92,7 +93,7 @@ accepter における データ種別 の指定に基づいて SAP_API_Caller �
 caller.go の func() 毎 の 以下の箇所が、指定された API をコールするソースコードです。  
 
 ```
-func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, addressID, bankCountryKey, bankNumber, supplier, purchasingOrganization, companyCode string, accepter []string) {
+func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, addressID, bankCountryKey, bankNumber, bPName, supplier, purchasingOrganization, companyCode string, accepter []string) {
 	wg := &sync.WaitGroup{}
 	wg.Add(len(accepter))
 	for _, fn := range accepter {
@@ -115,6 +116,11 @@ func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, 
 		case "Bank":
 			func() {
 				c.Bank(businessPartner, bankCountryKey, bankNumber)
+				wg.Done()
+			}()
+		case "BPName":
+			func() {
+				c.BPName(bPName)
 				wg.Done()
 			}()
 		case "Supplier":
