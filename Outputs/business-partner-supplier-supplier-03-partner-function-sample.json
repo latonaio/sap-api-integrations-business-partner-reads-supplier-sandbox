@@ -1,5 +1,5 @@
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L395",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L431",
 	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).Supplier",
 	"level": "INFO",
 	"message": [
@@ -10,10 +10,10 @@
 			"PartnerFunction": "VN",
 			"PartnerCounter": "1",
 			"DefaultPartner": true,
-			"CreationDate": "/Date(1540771200000)/",
+			"CreationDate": "2018-10-29T09:00:00+09:00",
 			"ReferenceSupplier": "1018",
 			"AuthorizationGroup": ""
 		}
 	],
-	"time": "2021-12-21T12:07:36.092805+09:00"
+	"time": "2022-01-28T09:55:53+09:00"
 }

@@ -1,13 +1,13 @@
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L320",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L325",
 	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).Address",
 	"level": "INFO",
 	"message": [
 		{
 			"BusinessPartner": "1018",
 			"AddressID": "30662",
-			"ValidityStartDate": "/Date(1540771200000+0000)/",
-			"ValidityEndDate": "/Date(253402300799000+0000)/",
+			"ValidityStartDate": "",
+			"ValidityEndDate": "",
 			"Country": "DE",
 			"Region": "",
 			"StreetName": "Bechtleplatz",
@@ -16,5 +16,5 @@
 			"Language": "EN"
 		}
 	],
-	"time": "2021-12-21T12:02:34.298977+09:00"
+	"time": "2022-01-28T09:53:08+09:00"
 }

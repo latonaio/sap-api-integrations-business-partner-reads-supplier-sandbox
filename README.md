@@ -149,20 +149,20 @@ func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, 
 ```
 
 ## Output  
-本マイクロサービスでは、[golang-logging-library](https://github.com/latonaio/golang-logging-library) により、以下のようなデータがJSON形式で出力されます。  
+本マイクロサービスでは、[golang-logging-library-for-sap](https://github.com/latonaio/golang-logging-library-for-sap) により、以下のようなデータがJSON形式で出力されます。  
 以下の sample.json の例は、SAP ビジネスパートナ仕入先  の 仕入先データ が取得された結果の JSON の例です。  
-以下の項目のうち、"Supplier" ～ "to_SupplierCompany" は、/SAP_API_Output_Formatter/type.go 内 の Type Supplier {} による出力結果です。"cursor" ～ "time"は、golang-logging-library による 定型フォーマットの出力結果です。  
+以下の項目のうち、"Supplier" ～ "to_SupplierCompany" は、/SAP_API_Output_Formatter/type.go 内 の Type Supplier {} による出力結果です。"cursor" ～ "time"は、golang-logging-library-for-sap による 定型フォーマットの出力結果です。  
 
 ```
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L381",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L417",
 	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).Supplier",
 	"level": "INFO",
 	"message": [
 		{
 			"Supplier": "1018",
 			"AuthorizationGroup": "",
-			"CreationDate": "/Date(1540771200000)/",
+			"CreationDate": "2018-10-29T09:00:00+09:00",
 			"Customer": "",
 			"PaymentIsBlockedForSupplier": false,
 			"PostingIsBlocked": false,
@@ -180,6 +180,6 @@ func (c *SAPAPICaller) AsyncGetBPSupplier(businessPartner, businessPartnerRole, 
 			"to_SupplierCompany": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_Supplier('1018')/to_SupplierCompany"
 		}
 	],
-	"time": "2021-12-21T12:07:35.34316+09:00"
+	"time": "2022-01-28T09:55:52+09:00"
 }
 ```

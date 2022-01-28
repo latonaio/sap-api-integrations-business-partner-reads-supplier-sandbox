@@ -1,20 +1,20 @@
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L98",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller/caller.go#L103",
 	"function": "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller.(*SAPAPICaller).General",
 	"level": "INFO",
 	"message": [
 		{
-			"BusinessPartner": "1018",
-			"AddressID": "30662",
-			"ValidityStartDate": "/Date(1540771200000+0000)/",
-			"ValidityEndDate": "/Date(253402300799000+0000)/",
-			"Country": "DE",
-			"Region": "",
-			"StreetName": "Bechtleplatz",
-			"CityName": "Neckarsulm",
-			"PostalCode": "74172",
+			"BusinessPartner": "1000140",
+			"AddressID": "27518",
+			"ValidityStartDate": "",
+			"ValidityEndDate": "",
+			"Country": "US",
+			"Region": "CT",
+			"StreetName": "farmington ave",
+			"CityName": "Berlin",
+			"PostalCode": "06037",
 			"Language": "EN"
 		}
 	],
-	"time": "2021-12-21T11:44:32.297736+09:00"
+	"time": "2022-01-28T09:50:26+09:00"
 }

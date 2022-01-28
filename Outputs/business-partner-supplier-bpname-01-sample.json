@@ -14,7 +14,7 @@
 			"BusinessPartnerGrouping": "BP01",
 			"BusinessPartnerName": "Bechtle AG Kriek street",
 			"CorrespondenceLanguage": "",
-			"CreationDate": "/Date(1540771200000)/",
+			"CreationDate": "2018-10-29T09:00:00+09:00",
 			"CreationTime": "PT05H48M11S",
 			"FirstName": "",
 			"Industry": "",
@@ -24,7 +24,7 @@
 			"IsSexUnknown": false,
 			"GenderCodeName": "",
 			"Language": "",
-			"LastChangeDate": "/Date(1540771200000)/",
+			"LastChangeDate": "2018-10-29T09:00:00+09:00",
 			"LastChangeTime": "PT05H51M10S",
 			"LastName": "",
 			"OrganizationBPName1": "Bechtle AG",
@@ -57,5 +57,5 @@
 			"to_Supplier": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('1018')/to_Supplier"
 		}
 	],
-	"time": "2021-12-28T09:43:05.589154+09:00"
+	"time": "2022-01-28T09:53:48+09:00"
 }
