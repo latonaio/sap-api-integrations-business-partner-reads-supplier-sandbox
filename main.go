@@ -2,7 +2,7 @@ package main
 
 import (
 	sap_api_caller "sap-api-integrations-business-partner-reads-supplier/SAP_API_Caller"
-	"sap-api-integrations-business-partner-reads-supplier/sap_api_input_reader"
+	"sap-api-integrations-business-partner-reads-supplier/SAP_API_Input_Reader"
 
 	"github.com/latonaio/golang-logging-library-for-sap/logger"
 )
