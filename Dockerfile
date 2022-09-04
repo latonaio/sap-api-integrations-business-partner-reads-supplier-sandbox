@@ -23,6 +23,5 @@ ENV SERVICE=sap-api-integrations-business-partner-reads-supplier \
 WORKDIR ${AION_HOME}
 
 COPY --from=builder /go/src/github.com/latonaio/sap-api-integrations-business-partner-reads-supplier .
-COPY --from=builder /go/src/github.com/latonaio/sample.json .
 
 CMD ["./sap-api-integrations-business-partner-reads-supplier"]
