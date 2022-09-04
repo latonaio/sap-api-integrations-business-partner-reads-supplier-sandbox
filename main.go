@@ -31,7 +31,7 @@ func main() {
 		inoutSDC.BusinessPartner.BusinessPartnerName,
 		inoutSDC.BusinessPartner.SupplierData.Supplier,
 		inoutSDC.BusinessPartner.SupplierData.PurchasingOrganization.PurchasingOrganization,
-		inoutSDC.BusinessPartner.Company.CompanyCode,
+		inoutSDC.BusinessPartner.SupplierData.Company.CompanyCode,
 		accepter,
 	)
 }

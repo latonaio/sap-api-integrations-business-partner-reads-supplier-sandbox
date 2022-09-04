@@ -180,18 +180,18 @@ type SDC struct {
 					AuthorizationGroup string      `json:"AuthorizationGroup"`
 				} `json:"PartnerFunction"`
 			} `json:"PurchasingOrganization"`
+			Company struct {
+				CompanyCode                 string      `json:"CompanyCode"`
+				PaymentBlockingReason       string      `json:"PaymentBlockingReason"`
+				PaymentMethodsList          string      `json:"PaymentMethodsList"`
+				PaymentTerms                string      `json:"PaymentTerms"`
+				ClearCustomerSupplier       bool        `json:"ClearCustomerSupplier"`
+				HouseBank                   string      `json:"HouseBank"`
+				ReconciliationAccount       string      `json:"ReconciliationAccount"`
+				SupplierIsBlockedForPosting bool        `json:"SupplierIsBlockedForPosting"`
+				DeletionIndicator           bool        `json:"DeletionIndicator"`
+			} `json:"Company"`
 		} `json:"SupplierData"`
-		Company struct {
-			CompanyCode                 string      `json:"CompanyCode"`
-			PaymentBlockingReason       string      `json:"PaymentBlockingReason"`
-			PaymentMethodsList          string      `json:"PaymentMethodsList"`
-			PaymentTerms                string      `json:"PaymentTerms"`
-			ClearCustomerSupplier       bool        `json:"ClearCustomerSupplier"`
-			HouseBank                   string      `json:"HouseBank"`
-			ReconciliationAccount       string      `json:"ReconciliationAccount"`
-			SupplierIsBlockedForPosting bool        `json:"SupplierIsBlockedForPosting"`
-			DeletionIndicator           bool        `json:"DeletionIndicator"`
-		} `json:"Company"`
 	} `json:"business_partner"`
 	APISchema           string   `json:"api_schema"`
 	Accepter            []string `json:"accepter"`
